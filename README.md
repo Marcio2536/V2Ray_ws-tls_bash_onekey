@@ -1,98 +1,78 @@
-## V2Ray 基于 Nginx 的 vmess+ws+tls 一键安装脚本
+### 準備工作
+* 準備一個域名，並將A記錄添加好。
+* [V2ray官方說明](https://www.v2ray.com/)，瞭解 TLS WebSocket 及 V2ray 相關信息
+* 安裝好 wget
 
-> 感谢 JetBrains 提供的非商业开源软件开发授权
-
-> Thanks for non-commercial open source development authorization by JetBrains
-### Telegram 群组
-* telegram 交流群:https://t.me/wulabing_v2ray 
-* telegram 更新公告频道：https://t.me/wulabing_channel
-
-### 准备工作
-* 准备一个域名，并将A记录添加好。
-* [V2ray官方说明](https://www.v2ray.com/)，了解 TLS WebSocket 及 V2ray 相关信息
-* 安装好 wget
-
-### 安装/更新方式（h2 和 ws 版本已合并）
+### 安裝/更新方式（h2 和 ws 版本已合併）
 Vmess+websocket+TLS+Nginx+Website
 ```
-wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.com/wulabing/V2Ray_ws-tls_bash_onekey/master/install.sh" && chmod +x install.sh && bash install.sh
+wget -N —no-check-certificate -q -O install.sh “https://raw.githubusercontent.com/wulabing/V2Ray_ws-tls_bash_onekey/master/install.sh” && chmod +x install.sh && bash install.sh
 ```
 
-### 注意事项
-* 如果你不了解脚本中各项设置的具体含义，除域名外，请使用脚本提供的默认值
-* 使用本脚本需要你拥有 Linux 基础及使用经验，了解计算机网络部分知识，计算机基础操作
-* 目前支持Debian 9+ / Ubuntu 18.04+ / Centos7+ ，部分Centos模板可能存在难以处理的编译问题，建议遇到编译问题时，请更换至其他系统模板
-* 群主仅提供极其有限的支持，如有问题可以询问群友
-* 每周日的凌晨3点，Nginx 会自动重启以配合证书的签发定时任务进行，在此期间，节点无法正常连接，预计持续时间为若干秒至两分钟
+### 注意事項
+* 如果你不瞭解腳本中各項設置的具體含義，除域名外，請使用腳本提供的默認值
+* 使用本腳本需要你擁有 Linux 基礎及使用經驗，瞭解計算機網絡部分知識，計算機基礎操作
+* 目前支持Debian 9+ / Ubuntu 18.04+ / Centos7+ ，部分Centos模板可能存在難以處理的編譯問題，建議遇到編譯問題時，請更換至其他系統模板
+* 群主僅提供極其有限的支持，如有問題可以詢問群友
+* 每周日的凌晨3點，Nginx 會自動重啓以配合證書的簽發定時任務進行，在此期間，節點無法正常連接，預計持續時間為若干秒至兩分鐘
 
-### 更新日志
-> 更新内容请查看 CHANGELOG.md
+### 更新日誌
+> 更新內容請查看 CHANGELOG.md
 
-### 鸣谢
-* ~~本脚本的另一个分支版本（Use Host）地址： https://github.com/dylanbai8/V2Ray_ws-tls_Website_onekey 请根据需求进行选择~~ 该作者可能已停止维护
-* 本脚本中 MTProxy-go TLS 版本项目引用 https://github.com/whunt1/onekeymakemtg 在此感谢 whunt1
-* 本脚本中 锐速4合1脚本原项目引用 https://www.94ish.me/1635.html 在此感谢
-* 本脚本中 锐速4合1脚本修改版项目引用 https://github.com/ylx2016/Linux-NetSpeed 在此感谢 ylx2016
+### 鳴謝
+* ~~本腳本的另一個分支版本（Use Host）地址： https://github.com/dylanbai8/V2Ray_ws-tls_Website_onekey 請根據需求進行選擇~~ 該作者可能已停止維護
+* 本腳本中 MTProxy-go TLS 版本項目引用 https://github.com/whunt1/onekeymakemtg 在此感謝 whunt1
+* 本腳本中 銳速4合1腳本原項目引用 https://www.94ish.me/1635.html 在此感謝
+* 本腳本中 銳速4合1腳本修改版項目引用 https://github.com/ylx2016/Linux-NetSpeed 在此感謝 ylx2016
 
-### 证书
-> 如果你已经拥有了你所使用域名的证书文件，可以将 crt 和 key 文件命名为 v2ray.crt v2ray.key 放在 /data 目录下（若目录不存在请先建目录），请注意证书文件权限及证书有效期，自定义证书有效期过期后请自行续签
+### 證書
+> 如果你已經擁有了你所使用域名的證書文件，可以將 crt 和 key 文件命名為 v2ray.crt v2ray.key 放在 /data 目錄下（若目錄不存在請先建目錄），請注意證書文件權限及證書有效期，自定義證書有效期過期後請自行續簽
 
-脚本支持自动生成 let's encrypted 证书，有效期3个月，理论上自动生成的证书支持自动续签
+腳本支持自動生成 let’s encrypted 證書，有效期3個月，理論上自動生成的證書支持自動續簽
 
-### 查看客户端配置
+### 查看客戶端配置
 `cat ~/v2ray_info.txt`
 
-### V2ray 简介
+### V2ray 簡介
 
-* V2Ray是一个优秀的开源网络代理工具，可以帮助你畅爽体验互联网，目前已经全平台支持Windows、Mac、Android、IOS、Linux等操作系统的使用。
-* 本脚本为一键完全配置脚本，在所有流程正常运行完毕后，直接按照输出结果设置客户端即可使用
-* 请注意：我们依然强烈建议你全方面的了解整个程序的工作流程及原理
+* V2Ray是一個優秀的開源網絡代理工具，可以幫助你暢爽體驗互聯網，目前已經全平台支持Windows、Mac、Android、IOS、Linux等操作系統的使用。
+* 本腳本為一鍵完全配置腳本，在所有流程正常運行完畢後，直接按照輸出結果設置客戶端即可使用
+* 請注意：我們依然強烈建議你全方面的瞭解整個程序的工作流程及原理
 
-### 建议单服务器仅搭建单个代理
-* 本脚本默认安装最新版本的V2ray core
-* V2ray core 目前最新版本为 4.22.1（同时请注意客户端 core 的同步更新，需要保证客户端内核版本 >= 服务端内核版本）
-* 建议使用默认的443端口作为连接端口
-* 伪装内容可自行替换。
+### 建議單服務器僅搭建單個代理
+* 本腳本默認安裝最新版本的V2ray core
+* V2ray core 目前最新版本為 4.22.1（同時請注意客戶端 core 的同步更新，需要保證客戶端內核版本 >= 服務端內核版本）
+* 建議使用默認的443端口作為連接端口
+* 偽裝內容可自行替換。
 
-### 注意事项
-* 推荐在纯净环境下使用本脚本，如果你是新手，请不要使用Centos系统。
-* 在尝试本脚本确实可用之前，请不要将本程序应用于生产环境中。
-* 该程序依赖 Nginx 实现相关功能，请使用 [LNMP](https://lnmp.org) 或其他类似携带 Nginx 脚本安装过 Nginx 的用户特别留意，使用本脚本可能会导致无法预知的错误（未测试，若存在，后续版本可能会处理本问题）。
-* V2Ray 的部分功能依赖于系统时间，请确保您使用V2RAY程序的系统 UTC 时间误差在三分钟之内，时区无关。
-* 本 bash 依赖于 [V2ray 官方安装脚本](https://install.direct/go.sh) 及 [acme.sh](https://github.com/Neilpang/acme.sh) 工作。
-* Centos 系统用户请预先在防火墙中放行程序相关端口（默认：80，443）
+### 注意事項
+* 推薦在純淨環境下使用本腳本，如果你是新手，請不要使用Centos系統。
+* 在嘗試本腳本確實可用之前，請不要將本程序應用於生產環境中。
+* 該程序依賴 Nginx 實現相關功能，請使用 [LNMP](https://lnmp.org) 或其他類似攜帶 Nginx 腳本安裝過 Nginx 的用戶特別留意，使用本腳本可能會導致無法預知的錯誤（未測試，若存在，後續版本可能會處理本問題）。
+* V2Ray 的部分功能依賴於系統時間，請確保您使用V2RAY程序的系統 UTC 時間誤差在三分鐘之內，時區無關。
+* 本 bash 依賴於 [V2ray 官方安裝腳本](https://install.direct/go.sh) 及 [acme.sh](https://github.com/Neilpang/acme.sh) 工作。
+* Centos 系統用戶請預先在防火牆中放行程序相關端口（默認：80，443）
 
 
-### 启动方式
+### 啓動方式
 
-启动 V2ray：`systemctl start v2ray`
+啓動 V2ray：`systemctl start v2ray`
 
 停止 V2ray：`systemctl stop v2ray`
 
-启动 Nginx：`systemctl start nginx`
+啓動 Nginx：`systemctl start nginx`
 
 停止 Nginx：`systemctl stop nginx`
 
-### 相关目录
+### 相關目錄
 
-Web 目录：`/home/wwwroot/3DCEList`
+Web 目錄：`/home/wwwroot/3DCEList`
 
-V2ray 服务端配置：`/etc/v2ray/config.json`
+V2ray 服務端配置：`/etc/v2ray/config.json`
 
-V2ray 客户端配置: `~/v2ray_info.inf`
+V2ray 客戶端配置: `~/v2ray_info.inf`
 
-Nginx 目录： `/etc/nginx`
+Nginx 目錄： `/etc/nginx`
 
-证书文件: `/data/v2ray.key 和 /data/v2ray.crt` 请注意证书权限设置
-
-### 捐赠
-
-目前支持通过 MugglePay 接受虚拟货币捐赠
-
-𝒘𝒖𝒍𝒂𝒃𝒊𝒏𝒈 邀请您使用麻瓜宝，基于Telegram的电子钱包，匿名支付0手续费秒级到账。https://telegram.me/MugglePayBot?start=T3Y78AZ3
-
-您可以通过Telegram向我匿名捐赠：发送 /pay @wulabing xxx  到 @MugglePayBot 即可 默认货币为 USDT 
-
-如需要通过支付宝/微信捐赠，请Telegram私聊 @wulabing 感谢您的支持
-
+證書文件: `/data/v2ray.key 和 /data/v2ray.crt` 請注意證書權限設置
 
