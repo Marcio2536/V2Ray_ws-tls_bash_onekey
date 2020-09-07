@@ -19,12 +19,6 @@ wget -N —no-check-certificate -q -O install.sh “https://raw.githubuserconten
 ### 更新日誌
 > 更新內容請查看 CHANGELOG.md
 
-### 鳴謝
-* ~~本腳本的另一個分支版本（Use Host）地址： https://github.com/dylanbai8/V2Ray_ws-tls_Website_onekey 請根據需求進行選擇~~ 該作者可能已停止維護
-* 本腳本中 MTProxy-go TLS 版本項目引用 https://github.com/whunt1/onekeymakemtg 在此感謝 whunt1
-* 本腳本中 銳速4合1腳本原項目引用 https://www.94ish.me/1635.html 在此感謝
-* 本腳本中 銳速4合1腳本修改版項目引用 https://github.com/ylx2016/Linux-NetSpeed 在此感謝 ylx2016
-
 ### 證書
 > 如果你已經擁有了你所使用域名的證書文件，可以將 crt 和 key 文件命名為 v2ray.crt v2ray.key 放在 /data 目錄下（若目錄不存在請先建目錄），請注意證書文件權限及證書有效期，自定義證書有效期過期後請自行續簽
 
